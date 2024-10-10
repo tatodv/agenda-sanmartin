@@ -1,3 +1,4 @@
+// components/Calendar.js
 import React, { useState } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -19,7 +20,6 @@ const Calendar = () => {
       category: 'Shows',
       image: '/images/concierto.jpg',
     },
-    // Más eventos...
   ];
 
   const categories = [
@@ -39,20 +39,22 @@ const Calendar = () => {
       : allEvents.filter((event) => event.category === selectedCategory);
 
   const renderEventContent = (eventInfo) => (
-    <div>
+    <div className="event-content">
       <Image
         src={eventInfo.event.extendedProps.image}
         alt={eventInfo.event.title}
         width={1080}
         height={1080}
+        className="img-fluid rounded"
+        style={{ maxWidth: '100%', height: 'auto' }}
       />
       <strong>{eventInfo.event.title}</strong>
     </div>
   );
 
   return (
-    <div>
-      <Dropdown className="mb-3">
+    <div className="mb-5">
+      <Dropdown className="mb-3 d-flex justify-content-center">
         <Dropdown.Toggle variant="primary" id="dropdown-basic">
           Categoría: {selectedCategory}
         </Dropdown.Toggle>
@@ -69,19 +71,23 @@ const Calendar = () => {
         </Dropdown.Menu>
       </Dropdown>
 
-      <FullCalendar
-        plugins={[dayGridPlugin]}
-        initialView="dayGridMonth"
-        events={filteredEvents}
-        eventContent={renderEventContent}
-        locale={esLocale}
-        headerToolbar={{
-          left: 'prev,next today',
-          center: 'title',
-          right: 'dayGridMonth,dayGridWeek,dayGridDay',
-        }}
-        height="auto"
-      />
+      <div className="calendar-container">
+        <FullCalendar
+          plugins={[dayGridPlugin]}
+          initialView="dayGridMonth"
+          events={filteredEvents}
+          eventContent={renderEventContent}
+          locale={esLocale}
+          headerToolbar={{
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,dayGridWeek,dayGridDay',
+          }}
+          height="auto"
+          contentHeight="auto"
+          aspectRatio={1.35}
+        />
+      </div>
     </div>
   );
 };
