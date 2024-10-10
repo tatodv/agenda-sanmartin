@@ -1,8 +1,5 @@
 // components/Calendar.js
 import React, { useState } from 'react';
-import FullCalendar from '@fullcalendar/react';
-import dayGridPlugin from '@fullcalendar/daygrid';
-import esLocale from '@fullcalendar/core/locales/es';
 import { Dropdown } from 'react-bootstrap';
 import Image from 'next/image';
 
