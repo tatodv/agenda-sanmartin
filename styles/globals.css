@@ -1,3 +1,5 @@
+@import './fullcalendar/daygrid.css';
+@import './fullcalendar/timegrid.css'; /* Si tienes este archivo */
 @import url('https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css');
 @import '~@fullcalendar/daygrid/main.css';
 @import '~@fullcalendar/timegrid/main.css';
